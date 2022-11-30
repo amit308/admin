@@ -1,0 +1,27 @@
+
+.modal .modal-body {
+   max-height: 350px;
+   overflow-y: auto;
+ }
+.modal-header{
+    background-color: rgb(20, 175, 20);
+}
+.save-footer{
+    position: absolute;
+    right: 60%;
+
+}
+.footer-cancel{
+position: absolute;
+}
+.save-footera {
+    background-color: rgb(78, 228, 78);
+    // width: 100%;
+    height: 150%;
+}
+
+.searchbutton{
+    position: absolute;
+    left: 90%;
+    top: 5%;
+}

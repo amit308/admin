@@ -1,0 +1,72 @@
+<div id="overlay" *ngIf="isLoading">
+  <div class="overlay-content">
+      <div class="spinner-border"></div>
+  </div>
+</div>
+<div class="app-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card bg-primary">
+          <div class="card-body text-center">
+            <h1 class="card-text">{{countOpen}}</h1>
+            <p class="card-text">Total Restaurants Opened</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-primary">
+          <div class="card-body text-center">
+            <h1 class="card-text">{{countClosed}}</h1>
+            <p class="card-text">Total Restaurants Closed</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-primary res-card" routerLink="base/password">
+          <div class="card-body text-center">
+            <h1 class="card-text"><i class="fa fa-key"></i></h1>
+            <p class="card-text">Reset Password</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-primary res-card"  routerLink="base/register">
+          <div class="card-body text-center">
+            <h1 class="card-text"><i class="fa fa-home"></i></h1>
+            <p class="card-text">Add New Restaurant</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="table-success">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Today Accepted Orders</th>
+              <th>Today Total Amount</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-light table-row-hover" *ngFor="let rest of restaurants; index as i">
+              <td><a style="text-decoration: underline; color: blue;" (click)="navToGraph(i)">{{rest._id}}</a></td>
+              <td>{{rest.restaurantName}}</td>
+              <td>{{rest.isOnline ? 'Open Today' : 'Closed'}}</td>
+              <td>{{rest.orderSummary?.acceptedOrder}}</td>
+              <td>£ {{rest.orderSummary?.totalOrderAmount}}</td>
+              <!-- <td>{{rest.orderSummary?.totalOrderAmount | number: '1.2-2' | germanCurr: rest.orderSummary?.totalOrderAmount}} €</td> -->
+              <td><a href="{{rest.websiteURL}}" [target]="'_blank'">{{rest.websiteURL}}</a></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
